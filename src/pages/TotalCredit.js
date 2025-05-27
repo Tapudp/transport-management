@@ -15,7 +15,12 @@ const TotalCredit = () => {
 
   return (
     <div className="container">
-      <Header title="Total Credit" />
+      <Header
+        title="Total Credit"
+        onHome={() => {
+          navigate("/");
+        }}
+      />
 
       <div style={{ margin: "20px 0" }}>
         <h2>Add Transporter</h2>
