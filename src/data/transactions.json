@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "date": "2023-05-15",
+    "description": "Fuel Advance",
+    "amount": -50000,
+    "panNumber": "ABCDE1234F"
+  },
+  {
+    "id": 2,
+    "date": "2023-05-10",
+    "description": "Trip Payment",
+    "amount": 200000,
+    "panNumber": "ABCDE1234F"
+  },
+  {
+    "id": 3,
+    "date": "2023-05-05",
+    "description": "Maintenance Advance",
+    "amount": -50000,
+    "panNumber": "FGHIJ5678K"
+  },
+  {
+    "id": 4,
+    "date": "2023-05-01",
+    "description": "Trip Payment",
+    "amount": 50000,
+    "panNumber": "FGHIJ5678K"
+  }
+]

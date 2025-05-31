@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FormInput from "../components/FormInput";
+import { ROUTES } from "../constants/routes";
 
 const Login = () => {
   const [mobileNumber, setMobileNumber] = useState("");
@@ -18,18 +19,13 @@ const Login = () => {
 
   const handleSubmit = () => {
     if (otp.length === 6) {
-      navigate("/total-credit");
+      navigate(ROUTES.TOTAL_CREDIT);
     }
   };
 
   return (
     <div className="container">
-      <Header
-        title="Login"
-        onHome={() => {
-          navigate("/");
-        }}
-      />
+      <Header title="Login" />
       <div style={{ backgroundColor: "gray" }}>
         <div style={{ textAlign: "center", margin: "20px 0" }}>
           <h2>07:00</h2>
@@ -84,13 +80,11 @@ const Login = () => {
           margin: "25px",
         }}
       >
-        {/* <button onClick={() => navigate("/login")}>Login</button> */}
-
-        <button onClick={() => navigate("/total-credit")}>
+        <button onClick={() => navigate(ROUTES.TOTAL_CREDIT)}>
           Transporter-view
         </button>
 
-        <button onClick={() => navigate("/search-truck")}>
+        <button onClick={() => navigate(ROUTES.SEARCH_TRUCK)}>
           PP Filler view
         </button>
       </div>

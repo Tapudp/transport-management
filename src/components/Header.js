@@ -1,21 +1,24 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
-const Header = ({ title, onHome, onBack }) => {
+const Header = ({ title, onBack }) => {
+  const navigate = useNavigate();
   return (
     <AppBar position="static" style={{ backgroundColor: "#25D366" }}>
       <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={onHome}
-            aria-label="home"
-            sx={{ mr: 2, width: "100px" }}
-          >
-            <HomeIcon />
-          </IconButton>
+        <IconButton
+          edge="start"
+          color="inherit"
+          onClick={() => navigate(ROUTES.LOGIN)}
+          aria-label="home"
+          sx={{ mr: 2, width: "100px" }}
+        >
+          <HomeIcon />
+        </IconButton>
         {onBack && (
           <IconButton
             edge="start"

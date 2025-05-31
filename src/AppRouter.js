@@ -5,18 +5,18 @@ import TotalCredit from "./pages/TotalCredit";
 import AddTransporter from "./pages/AddTransporter";
 import ViewTransporter from "./pages/ViewTransporter";
 import SearchTruck from "./pages/SearchTruck";
-import NotFound from "./pages/404NotFound";
+import NotFound from "./pages/NotFound";
+import { ROUTES } from "./constants/routes";
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/total-credit" element={<TotalCredit />} />
-        <Route path="/add-transporter" element={<AddTransporter />} />
-        <Route path="/view-transporter" element={<ViewTransporter />} />
-        <Route path="/search-truck" element={<SearchTruck />} />
-        {/* Catch-all route for 404 pages */}
+        <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.TOTAL_CREDIT} element={<TotalCredit />} />
+        <Route path={ROUTES.ADD_TRANSPORTER} element={<AddTransporter />} />
+        <Route path={ROUTES.VIEW_TRANSPORTER} element={<ViewTransporter />} />
+        <Route path={ROUTES.SEARCH_TRUCK} element={<SearchTruck />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

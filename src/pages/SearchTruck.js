@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FormInput from "../components/FormInput";
+import { ROUTES } from "../constants/routes";
 
 const SearchTruck = () => {
   const navigate = useNavigate();
@@ -17,17 +18,12 @@ const SearchTruck = () => {
 
   const handleSubmit = () => {
     // Submit logic here
-    navigate("/total-credit");
+    navigate(ROUTES.TOTAL_CREDIT);
   };
 
   return (
     <div className="container">
-      <Header
-        title="Welcome"
-        onHome={() => {
-          navigate("/");
-        }}
-      />
+      <Header title="Welcome" />
 
       <div style={{ margin: "20px 0" }}>
         <h2>Search for Truck</h2>

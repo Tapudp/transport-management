@@ -1,0 +1,165 @@
+[
+  {
+    "name": "Jonathan Patterson",
+    "mobile": "9876543210",
+    "address": "123 Main St",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pinCode": "400001",
+    "panNumber": "ABCDE1234F",
+    "trucks": [
+      { "truckNumber": "GJ01N8571" },
+      { "truckNumber": "MH02P1234" }
+    ]
+  },
+  {
+    "name": "Shiv shakti Transport",
+    "mobile": "8765432109",
+    "address": "456 Oak Ave",
+    "city": "Delhi",
+    "state": "Delhi",
+    "pinCode": "110001",
+    "panNumber": "FGHIJ5678K",
+    "trucks": [
+      { "truckNumber": "DL03Q5678" }
+    ]
+  },
+  {
+    "name": "Mahadev Transport",
+    "mobile": "8765422109",
+    "address": "456 Kriss cross",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pinCode": "259393",
+    "panNumber": "FSU395IORE",
+    "trucks": [
+      { "truckNumber": "KA01BN5678" }
+    ]
+  },
+    {
+    "name": "Shree Ganesh Transport",
+    "mobile": "9876543210",
+    "address": "123 MG Road",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pinCode": "400001",
+    "panNumber": "ABCPG1234D",
+    "trucks": [
+      { "truckNumber": "MH02DE1432" },
+      { "truckNumber": "MH04JK5678" }
+    ]
+  },
+  {
+    "name": "Kaveri Goods Carrier",
+    "mobile": "8765432190",
+    "address": "45 Industrial Area",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "pinCode": "600032",
+    "panNumber": "DEFGH5678K",
+    "trucks": [
+      { "truckNumber": "TN09PQ9012" }
+    ]
+  },
+  {
+    "name": "Himalayan Roadlines",
+    "mobile": "7654321098",
+    "address": "78 Hill View Colony",
+    "city": "Dehradun",
+    "state": "Uttarakhand",
+    "pinCode": "248001",
+    "panNumber": "GHIJK9012L",
+    "trucks": [
+      { "truckNumber": "UK07MN3456" },
+      { "truckNumber": "UK03AB7890" }
+    ]
+  },
+  {
+    "name": "Sai Baba Transport",
+    "mobile": "6543210987",
+    "address": "3 Temple Road",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pinCode": "500004",
+    "panNumber": "LMNOP3456Q",
+    "trucks": [
+      { "truckNumber": "TS08CD2345" },
+      { "truckNumber": "TS05EF6789" }
+    ]
+  },
+  {
+    "name": "Delhi Express Cargo",
+    "mobile": "9432109876",
+    "address": "22 Nehru Place",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pinCode": "110019",
+    "panNumber": "QRSTU7890V",
+    "trucks": [
+      { "truckNumber": "DL01GH0123" },
+      { "truckNumber": "DL04IJ4567" }
+    ]
+  },
+  {
+    "name": "Royal Bengal Transport",
+    "mobile": "8321098765",
+    "address": "56 Howrah Bridge Road",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "pinCode": "700001",
+    "panNumber": "VWXYZ1234A",
+    "trucks": [
+      { "truckNumber": "WB15KL8901" }
+    ]
+  },
+  {
+    "name": "Gujarat Goods Movers",
+    "mobile": "7210987654",
+    "address": "12 Sabarmati Road",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "pinCode": "380005",
+    "panNumber": "BCDFG5678H",
+    "trucks": [
+      { "truckNumber": "GJ03MN2345" },
+      { "truckNumber": "GJ06OP6789" }
+    ]
+  },
+  {
+    "name": "Punjab Roadways",
+    "mobile": "6109876543",
+    "address": "9 Golden Temple Road",
+    "city": "Amritsar",
+    "state": "Punjab",
+    "pinCode": "143001",
+    "panNumber": "HIJKL9012M",
+    "trucks": [
+      { "truckNumber": "PB07QR3456" }
+    ]
+  },
+  {
+    "name": "Kerala Cargo Services",
+    "mobile": "5098765432",
+    "address": "34 Backwaters Lane",
+    "city": "Kochi",
+    "state": "Kerala",
+    "pinCode": "682001",
+    "panNumber": "MNOPQ3456R",
+    "trucks": [
+      { "truckNumber": "KL10ST7890" },
+      { "truckNumber": "KL08UV1234" }
+    ]
+  },
+  {
+    "name": "Rajasthan Desert Carriers",
+    "mobile": "4987654321",
+    "address": "7 Hawa Mahal Road",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "pinCode": "302001",
+    "panNumber": "STUVW7890X",
+    "trucks": [
+      { "truckNumber": "RJ14WX5678" }
+    ]
+  }
+]

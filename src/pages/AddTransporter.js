@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FormInput from "../components/FormInput";
+import { ROUTES } from "../constants/routes";
 
 const AddTransporter = () => {
   const navigate = useNavigate();
+  const { addTransporter } = useContext(AppContext);
+  const [trucks, setTrucks] = useState([]);
+  const [currentTruck, setCurrentTruck] = useState({
+    stateCode: "",
+    districtCode: "",
+    series: "",
+    number: "",
+  });
+
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
@@ -14,6 +25,7 @@ const AddTransporter = () => {
     state: "",
     pinCode: "",
     panNumber: "",
+    trucks: [],
   });
 
   const handleChange = (e) => {
@@ -24,36 +36,93 @@ const AddTransporter = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    // Submit logic here
-    navigate("/total-credit");
+  const handleTruckChange = (e) => {
+    const { name, value } = e.target;
+    setCurrentTruck((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const addTruck = () => {
+    if (
+      currentTruck.stateCode &&
+      currentTruck.districtCode &&
+      currentTruck.series &&
+      currentTruck.number
+    ) {
+      const truckNumber = `${currentTruck.stateCode}${currentTruck.districtCode}${currentTruck.series}${currentTruck.number}`;
+      setFormData((prev) => ({
+        ...prev,
+        trucks: [...prev.trucks, { truckNumber }],
+      }));
+      setCurrentTruck({
+        stateCode: "",
+        districtCode: "",
+        series: "",
+        number: "",
+      });
+    }
+  };
+
+  const removeTruck = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      trucks: prev.trucks.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!formData.name || !formData.mobile || !formData.panNumber) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    // Create new transporter object
+    const newTransporter = {
+      ...formData,
+      mobile: formData.mobile.toString(), // Ensure mobile is string
+      pinCode: formData.pinCode.toString(), // Ensure pinCode is string
+    };
+
+    // Call context function to add transporter
+    addTransporter(newTransporter);
+
+    // Navigate back to transporter list
+    navigate(ROUTES.TOTAL_CREDIT);
   };
 
   return (
     <div className="container">
       <Header
         title="Add Transporter"
-        onHome={() => {
-          navigate("/");
-        }}
+        onBack={() => navigate(ROUTES.TOTAL_CREDIT)}
       />
 
-      <div style={{ margin: "20px 0", height: "80vh", overflowY: "scroll" }}>
-        <h2>View Transporter List</h2>
+      <form
+        onSubmit={handleSubmit}
+        style={{ margin: "20px 0", height: "80vh", overflowY: "scroll" }}
+      >
+        <h2>Add New Transporter</h2>
 
         <FormInput
-          label="Name"
+          label="Name *"
           name="name"
           value={formData.name}
           onChange={handleChange}
+          required
         />
 
         <FormInput
-          label="Mobile"
+          label="Mobile *"
           name="mobile"
           type="tel"
           value={formData.mobile}
           onChange={handleChange}
+          required
         />
 
         <FormInput
@@ -86,52 +155,130 @@ const AddTransporter = () => {
         />
 
         <FormInput
-          label="PAN Number"
+          label="PAN Number *"
           name="panNumber"
           value={formData.panNumber}
           onChange={handleChange}
+          required
         />
 
         <div style={{ margin: "15px 0" }}>
           <label
             style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}
           >
-            List of Truck :
+            Add Trucks:
           </label>
-          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+              marginBottom: "10px",
+            }}
+          >
             <input
               type="text"
+              name="stateCode"
               placeholder="GJ"
+              value={currentTruck.stateCode}
+              onChange={handleTruckChange}
+              maxLength={2}
               style={{ width: "50px", padding: "8px" }}
             />
             <input
               type="text"
+              name="districtCode"
               placeholder="01"
+              value={currentTruck.districtCode}
+              onChange={handleTruckChange}
+              maxLength={2}
               style={{ width: "50px", padding: "8px" }}
             />
             <input
               type="text"
+              name="series"
               placeholder="N"
+              value={currentTruck.series}
+              onChange={handleTruckChange}
+              maxLength={1}
               style={{ width: "30px", padding: "8px" }}
             />
             <input
               type="text"
+              name="number"
               placeholder="8571"
+              value={currentTruck.number}
+              onChange={handleTruckChange}
+              maxLength={4}
               style={{ width: "80px", padding: "8px" }}
             />
+            <button
+              type="button"
+              onClick={addTruck}
+              style={{
+                padding: "8px 12px",
+                backgroundColor: "#2196F3",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+              }}
+            >
+              Add
+            </button>
           </div>
+
+          {/* Display added trucks */}
+          {formData.trucks.length > 0 && (
+            <div style={{ marginTop: "10px" }}>
+              <p style={{ fontWeight: "500", marginBottom: "5px" }}>
+                Added Trucks:
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                {formData.trucks.map((truck, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      backgroundColor: "#e0e0e0",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                    }}
+                  >
+                    {truck.truckNumber}
+                    <button
+                      type="button"
+                      onClick={() => removeTruck(index)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "#f44336",
+                        cursor: "pointer",
+                        padding: "0",
+                        fontSize: "12px",
+                      }}
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div style={{ display: "flex", gap: "10px", margin: "20px" }}>
           <button
-            onClick={() => navigate("/total-credit")}
+            type="button"
+            onClick={() => navigate(ROUTES.TOTAL_CREDIT)}
             style={{ backgroundColor: "#f44336" }}
           >
             Cancel
           </button>
-          <button onClick={handleSubmit}>Submit</button>
+          <button type="submit">Submit</button>
         </div>
-      </div>
+      </form>
 
       <Footer />
     </div>

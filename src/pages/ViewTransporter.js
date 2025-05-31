@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {
@@ -12,41 +13,63 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { ROUTES } from "../constants/routes";
 
 const ViewTransporter = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { transporter } = location.state || {};
+  const {
+    transporter: { panNumber },
+  } = location.state || {};
+  const { getTransporterByPan, getTransactionsByPan } = useContext(AppContext);
 
-  // Sample data - in a real app, this would come from an API
-  const transactionHistory = [
-    { id: 1, date: "2023-05-15", description: "Fuel Advance", amount: -50000 },
-    { id: 2, date: "2023-05-10", description: "Trip Payment", amount: 200000 },
-    {
-      id: 3,
-      date: "2023-05-05",
-      description: "Maintenance Advance",
-      amount: -50000,
-    },
-    { id: 4, date: "2023-05-01", description: "Trip Payment", amount: 50000 },
-  ];
+  const transporter = getTransporterByPan(panNumber);
+  const transactions = getTransactionsByPan(panNumber);
 
-  // Calculate current balance (in a real app, this would come from the API)
-  const currentBalance = transporter?.amount || 0;
+  // Calculate current balance
+  const currentBalance = transactions.reduce((sum, t) => sum + t.amount, 0);
+
+  // Calculate running balance for each transaction
+  let runningBalance = 0;
+  const transactionsWithBalance = transactions
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .map((t) => {
+      runningBalance += t.amount;
+      return { ...t, balance: runningBalance };
+    });
+
+  if (!transporter) {
+    return (
+      <div className="container">
+        <Header
+          title="Transporter Not Found"
+          onBack={() => navigate(ROUTES.TOTAL_CREDIT)}
+        />
+        <Typography
+          variant="h6"
+          style={{ textAlign: "center", marginTop: "20px" }}
+        >
+          Transporter not found
+        </Typography>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="container">
       <Header
         title={`Transporter Details`}
-        onBack={() => navigate("/total-credit")}
-        onHome={() => {
-          navigate("/");
-        }}
+        onBack={() => navigate(ROUTES.TOTAL_CREDIT)}
       />
 
       <div style={{ margin: "20px 0" }}>
         <Typography variant="h5" gutterBottom>
-          {transporter?.name || "Transporter"}
+          {transporter.name}
+        </Typography>
+
+        <Typography variant="subtitle1" gutterBottom>
+          PAN: {transporter.panNumber}
         </Typography>
 
         <Paper
@@ -70,6 +93,24 @@ const ViewTransporter = () => {
           </Typography>
         </Paper>
 
+        {/* <Typography variant="h6" gutterBottom>
+          Trucks:
+        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px",
+            marginBottom: "20px",
+          }}
+        >
+          {transporter.trucks.map((truck, index) => (
+            <Paper key={index} elevation={2} style={{ padding: "8px 12px" }}>
+              {truck.truckNumber}
+            </Paper>
+          ))}
+        </div> */}
+
         <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
           Transaction History
         </Typography>
@@ -81,11 +122,11 @@ const ViewTransporter = () => {
                 <TableCell>Date</TableCell>
                 <TableCell>Description</TableCell>
                 <TableCell align="right">Amount (₹)</TableCell>
-                {/* <TableCell align="right">Balance (₹)</TableCell> */}
+                <TableCell align="right">Balance (₹)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {transactionHistory.map((transaction) => (
+              {transactionsWithBalance.map((transaction) => (
                 <TableRow key={transaction.id}>
                   <TableCell>{transaction.date}</TableCell>
                   <TableCell>{transaction.description}</TableCell>
@@ -97,9 +138,9 @@ const ViewTransporter = () => {
                   >
                     {transaction.amount.toLocaleString("en-IN")}
                   </TableCell>
-                  {/* <TableCell align="right">
-                    {transaction.balance.toLocaleString('en-IN')}
-                  </TableCell> */}
+                  <TableCell align="right">
+                    {transaction.balance.toLocaleString("en-IN")}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

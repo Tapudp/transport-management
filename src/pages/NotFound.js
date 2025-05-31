@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 // 404 Page Component
 const NotFound = () => {
@@ -19,7 +20,7 @@ const NotFound = () => {
       <h1>404 - Page Not Found</h1>
       <p>The page you're looking for doesn't exist.</p>
       <button
-        onClick={() => navigate("/")}
+        onClick={() => navigate(ROUTES.LOGIN)}
         style={{
           padding: "10px 20px",
           backgroundColor: "#4CAF50",

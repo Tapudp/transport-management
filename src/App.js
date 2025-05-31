@@ -1,12 +1,15 @@
-import React from 'react';
-import GlobalStyles from './styles/globalStyles';
-import AppRouter from './AppRouter';
+import React from "react";
+import GlobalStyles from "./styles/globalStyles";
+import AppRouter from "./AppRouter";
+import { AppProvider } from "./context/AppContext";
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <AppRouter />
+      <AppProvider>
+        <GlobalStyles />
+        <AppRouter />
+      </AppProvider>
     </>
   );
 }
