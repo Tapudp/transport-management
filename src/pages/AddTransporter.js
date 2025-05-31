@@ -9,7 +9,6 @@ import { ROUTES } from "../constants/routes";
 const AddTransporter = () => {
   const navigate = useNavigate();
   const { addTransporter } = useContext(AppContext);
-  const [trucks, setTrucks] = useState([]);
   const [currentTruck, setCurrentTruck] = useState({
     stateCode: "",
     districtCode: "",
@@ -75,23 +74,18 @@ const AddTransporter = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic validation
     if (!formData.name || !formData.mobile || !formData.panNumber) {
       alert("Please fill in all required fields");
       return;
     }
 
-    // Create new transporter object
     const newTransporter = {
       ...formData,
-      mobile: formData.mobile.toString(), // Ensure mobile is string
-      pinCode: formData.pinCode.toString(), // Ensure pinCode is string
+      mobile: formData.mobile.toString(),
+      pinCode: formData.pinCode.toString(),
     };
 
-    // Call context function to add transporter
     addTransporter(newTransporter);
-
-    // Navigate back to transporter list
     navigate(ROUTES.TOTAL_CREDIT);
   };
 
@@ -176,6 +170,7 @@ const AddTransporter = () => {
               marginBottom: "10px",
             }}
           >
+            {/* State Code (2 letters) */}
             <input
               type="text"
               name="stateCode"
@@ -183,8 +178,21 @@ const AddTransporter = () => {
               value={currentTruck.stateCode}
               onChange={handleTruckChange}
               maxLength={2}
-              style={{ width: "50px", padding: "8px" }}
+              pattern="[A-Za-z]{2}"
+              title="Enter 2-letter state code"
+              style={{
+                width: "50px",
+                padding: "8px",
+                textTransform: "uppercase",
+              }}
+              onInput={(e) => {
+                e.target.value = e.target.value
+                  .replace(/[^A-Za-z]/g, "")
+                  .toUpperCase();
+              }}
             />
+
+            {/* District Code (2 digits) */}
             <input
               type="text"
               name="districtCode"
@@ -192,17 +200,37 @@ const AddTransporter = () => {
               value={currentTruck.districtCode}
               onChange={handleTruckChange}
               maxLength={2}
+              pattern="\d{2}"
+              title="Enter 2-digit district code"
               style={{ width: "50px", padding: "8px" }}
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/\D/g, "");
+              }}
             />
+
+            {/* Series (1-3 letters) */}
             <input
               type="text"
               name="series"
               placeholder="N"
               value={currentTruck.series}
               onChange={handleTruckChange}
-              maxLength={1}
-              style={{ width: "30px", padding: "8px" }}
+              maxLength={3}
+              pattern="[A-Za-z]{1,3}"
+              title="Enter 1-3 letter series"
+              style={{
+                width: "50px",
+                padding: "8px",
+                textTransform: "uppercase",
+              }}
+              onInput={(e) => {
+                e.target.value = e.target.value
+                  .replace(/[^A-Za-z]/g, "")
+                  .toUpperCase();
+              }}
             />
+
+            {/* Number (4 digits) */}
             <input
               type="text"
               name="number"
@@ -210,8 +238,14 @@ const AddTransporter = () => {
               value={currentTruck.number}
               onChange={handleTruckChange}
               maxLength={4}
+              pattern="\d{4}"
+              title="Enter 4-digit number"
               style={{ width: "80px", padding: "8px" }}
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/\D/g, "");
+              }}
             />
+
             <button
               type="button"
               onClick={addTruck}
@@ -222,6 +256,12 @@ const AddTransporter = () => {
                 border: "none",
                 borderRadius: "4px",
               }}
+              disabled={
+                currentTruck.stateCode.length !== 2 ||
+                currentTruck.districtCode.length !== 2 ||
+                currentTruck.series.length < 1 ||
+                currentTruck.number.length !== 4
+              }
             >
               Add
             </button>
