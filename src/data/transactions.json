@@ -4,27 +4,174 @@
     "date": "2023-05-15",
     "description": "Fuel Advance",
     "amount": -50000,
-    "panNumber": "ABCDE1234F"
+    "panNumber": "ABCPG1234D"
   },
   {
     "id": 2,
     "date": "2023-05-10",
-    "description": "Trip Payment",
+    "description": "Mumbai-Delhi Trip Payment",
     "amount": 200000,
-    "panNumber": "ABCDE1234F"
+    "panNumber": "ABCPG1234D"
   },
   {
     "id": 3,
-    "date": "2023-05-05",
-    "description": "Maintenance Advance",
-    "amount": -50000,
-    "panNumber": "FGHIJ5678K"
+    "date": "2023-04-28",
+    "description": "Tyre Replacement",
+    "amount": -32000,
+    "panNumber": "ABCPG1234D"
   },
   {
     "id": 4,
-    "date": "2023-05-01",
-    "description": "Trip Payment",
-    "amount": 50000,
-    "panNumber": "FGHIJ5678K"
+    "date": "2023-04-15",
+    "description": "Pune-Bangalore Trip",
+    "amount": 180000,
+    "panNumber": "ABCPG1234D"
+  },
+  {
+    "id": 5,
+    "date": "2023-06-02",
+    "description": "Chennai-Hyderabad Trip",
+    "amount": 125000,
+    "panNumber": "DEFGH5678K"
+  },
+  {
+    "id": 6,
+    "date": "2023-05-22",
+    "description": "Engine Overhaul",
+    "amount": -75000,
+    "panNumber": "DEFGH5678K"
+  },
+  {
+    "id": 7,
+    "date": "2023-05-05",
+    "description": "Maintenance Advance",
+    "amount": -50000,
+    "panNumber": "DEFGH5678K"
+  },
+  {
+    "id": 8,
+    "date": "2023-07-10",
+    "description": "Dehradun-Delhi Trip",
+    "amount": 90000,
+    "panNumber": "GHIJK9012L"
+  },
+  {
+    "id": 9,
+    "date": "2023-06-18",
+    "description": "Driver Salary Advance",
+    "amount": -25000,
+    "panNumber": "GHIJK9012L"
+  },
+  {
+    "id": 10,
+    "date": "2023-08-05",
+    "description": "Hyderabad-Chennai Trip",
+    "amount": 110000,
+    "panNumber": "LMNOP3456Q"
+  },
+  {
+    "id": 11,
+    "date": "2023-07-22",
+    "description": "Insurance Premium",
+    "amount": -45000,
+    "panNumber": "LMNOP3456Q"
+  },
+  {
+    "id": 12,
+    "date": "2023-09-12",
+    "description": "Delhi-Kolkata Trip",
+    "amount": 185000,
+    "panNumber": "QRSTU7890V"
+  },
+  {
+    "id": 13,
+    "date": "2023-08-30",
+    "description": "Annual Fitness Certificate",
+    "amount": -15000,
+    "panNumber": "QRSTU7890V"
+  },
+  {
+    "id": 14,
+    "date": "2023-10-08",
+    "description": "Kolkata-Guwahati Trip",
+    "amount": 220000,
+    "panNumber": "VWXYZ1234A"
+  },
+  {
+    "id": 15,
+    "date": "2023-09-15",
+    "description": "Load Permit Charges",
+    "amount": -8000,
+    "panNumber": "VWXYZ1234A"
+  },
+  {
+    "id": 16,
+    "date": "2023-11-05",
+    "description": "Ahmedabad-Mumbai Trip",
+    "amount": 95000,
+    "panNumber": "BCDFG5678H"
+  },
+  {
+    "id": 17,
+    "date": "2023-10-20",
+    "description": "Truck Wash & Cleaning",
+    "amount": -3000,
+    "panNumber": "VWXYZ1234A"
+  },
+  {
+    "id": 18,
+    "date": "2023-12-15",
+    "description": "Amritsar-Chandigarh Trip",
+    "amount": 65000,
+    "panNumber": "HIJKL9012M"
+  },
+  {
+    "id": 19,
+    "date": "2023-11-28",
+    "description": "Annual Tax Payment",
+    "amount": -28000,
+    "panNumber": "HIJKL9012M"
+  },
+  {
+    "id": 20,
+    "date": "2024-01-10",
+    "description": "Kochi-Coimbatore Trip",
+    "amount": 78000,
+    "panNumber": "MNOPQ3456R"
+  },
+  {
+    "id": 21,
+    "date": "2023-12-22",
+    "description": "Driver Bonus Payment",
+    "amount": -15000,
+    "panNumber": "MNOPQ3456R"
+  },
+  {
+    "id": 22,
+    "date": "2024-02-05",
+    "description": "Jaipur-Udaipur Trip",
+    "amount": 55000,
+    "panNumber": "STUVW7890X"
+  },
+  {
+    "id": 23,
+    "date": "2024-01-18",
+    "description": "GPS Subscription Renewal",
+    "amount": -12000,
+    "panNumber": "STUVW7890X"
+  },
+  {
+    "id": 24,
+    "date": "2023-06-10",
+    "description": "Bangalore-Chennai Trip",
+    "amount": 85000,
+    "panNumber": "FSU395IORE"
+  },
+  {
+    "id": 25,
+    "date": "2023-05-25",
+    "description": "Oil Change Service",
+    "amount": -12000,
+    "panNumber": "FSU395IORE"
   }
 ]
