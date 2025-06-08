@@ -31,7 +31,7 @@ const TotalCredit = () => {
               transporter={transporter}
               onClick={() =>
                 navigate(ROUTES.VIEW_TRANSPORTER, {
-                  state: { panNumber: transporter.panNumber },
+                  state: { transporter },
                 })
               }
             />
