@@ -1,163 +1,189 @@
 [
   {
-    "name": "Jonathan Patterson",
+    "firmName": "Company Jonathan Patterson",
+    "ownerName": "Jonathan",
     "mobile": "9876543210",
     "address": "123 Main St",
     "city": "Mumbai",
     "state": "Maharashtra",
     "pinCode": "400001",
     "panNumber": "ABCDE1234F",
+    "balance": 125000,
     "trucks": [
       { "truckNumber": "GJ01N8571" },
       { "truckNumber": "MH02P1234" }
     ]
   },
   {
-    "name": "Shiv shakti Transport",
+    "firmName": "Shiv shakti Transport",
+    "ownerName": "Shiv",
     "mobile": "8765432109",
     "address": "456 Oak Ave",
     "city": "Delhi",
     "state": "Delhi",
     "pinCode": "110001",
     "panNumber": "FGHIJ5678K",
+    "balance": -247000,
     "trucks": [
       { "truckNumber": "DL03Q5678" }
     ]
   },
   {
-    "name": "Mahadev Transport",
+    "firmName": "Mahadev Transport",
+    "ownerName": "Maha",
     "mobile": "8765422109",
     "address": "456 Kriss cross",
     "city": "Bangalore",
     "state": "Karnataka",
     "pinCode": "259393",
     "panNumber": "FSU395IORE",
+    "balance": 286305,
     "trucks": [
       { "truckNumber": "KA01BN5678" }
     ]
   },
     {
-    "name": "Shree Ganesh Transport",
+    "firmName": "Shree Ganesh Transport",
+    "ownerName": "Ganesh",
     "mobile": "9876543210",
     "address": "123 MG Road",
     "city": "Mumbai",
     "state": "Maharashtra",
     "pinCode": "400001",
     "panNumber": "ABCPG1234D",
+    "balance": -376689,
     "trucks": [
       { "truckNumber": "MH02DE1432" },
       { "truckNumber": "MH04JK5678" }
     ]
   },
   {
-    "name": "Kaveri Goods Carrier",
+    "firmName": "Kaveri Goods Carrier",
+    "ownerName": "Koul",
     "mobile": "8765432190",
     "address": "45 Industrial Area",
     "city": "Chennai",
     "state": "Tamil Nadu",
     "pinCode": "600032",
     "panNumber": "DEFGH5678K",
+    "balance": 958467,
     "trucks": [
       { "truckNumber": "TN09PQ9012" }
     ]
   },
   {
-    "name": "Himalayan Roadlines",
+    "firmName": "Himalayan Roadlines",
+    "ownerName": "Slaw",
     "mobile": "7654321098",
     "address": "78 Hill View Colony",
     "city": "Dehradun",
     "state": "Uttarakhand",
     "pinCode": "248001",
     "panNumber": "GHIJK9012L",
+    "balance": -475946,
     "trucks": [
       { "truckNumber": "UK07MN3456" },
       { "truckNumber": "UK03AB7890" }
     ]
   },
   {
-    "name": "Sai Baba Transport",
+    "firmName": "Sai Baba Transport",
+    "ownerName": "Awtlas",
     "mobile": "6543210987",
     "address": "3 Temple Road",
     "city": "Hyderabad",
     "state": "Telangana",
     "pinCode": "500004",
     "panNumber": "LMNOP3456Q",
+    "balance": 359467,
     "trucks": [
       { "truckNumber": "TS08CD2345" },
       { "truckNumber": "TS05EF6789" }
     ]
   },
   {
-    "name": "Delhi Express Cargo",
+    "firmName": "Delhi Express Cargo",
+    "ownerName": "Topa",
     "mobile": "9432109876",
     "address": "22 Nehru Place",
     "city": "New Delhi",
     "state": "Delhi",
     "pinCode": "110019",
     "panNumber": "QRSTU7890V",
+    "balance": -396367,
     "trucks": [
       { "truckNumber": "DL01GH0123" },
       { "truckNumber": "DL04IJ4567" }
     ]
   },
   {
-    "name": "Royal Bengal Transport",
+    "firmName": "Royal Bengal Transport",
+    "ownerName": "Ben",
     "mobile": "8321098765",
     "address": "56 Howrah Bridge Road",
     "city": "Kolkata",
     "state": "West Bengal",
     "pinCode": "700001",
     "panNumber": "VWXYZ1234A",
+    "balance": 296362,
     "trucks": [
       { "truckNumber": "WB15KL8901" }
     ]
   },
   {
-    "name": "Gujarat Goods Movers",
+    "firmName": "Gujarat Goods Movers",
+    "ownerName": "Yasha",
     "mobile": "7210987654",
     "address": "12 Sabarmati Road",
     "city": "Ahmedabad",
     "state": "Gujarat",
     "pinCode": "380005",
     "panNumber": "BCDFG5678H",
+    "balance": -479382,
     "trucks": [
       { "truckNumber": "GJ03MN2345" },
       { "truckNumber": "GJ06OP6789" }
     ]
   },
   {
-    "name": "Punjab Roadways",
+    "firmName": "Punjab Roadways",
+    "ownerName": "Pnd",
     "mobile": "6109876543",
     "address": "9 Golden Temple Road",
     "city": "Amritsar",
     "state": "Punjab",
     "pinCode": "143001",
     "panNumber": "HIJKL9012M",
+    "balance": 382969,
     "trucks": [
       { "truckNumber": "PB07QR3456" }
     ]
   },
   {
-    "name": "Kerala Cargo Services",
+    "firmName": "Kerala Cargo Services",
+    "ownerName": "Kera",
     "mobile": "5098765432",
     "address": "34 Backwaters Lane",
     "city": "Kochi",
     "state": "Kerala",
     "pinCode": "682001",
     "panNumber": "MNOPQ3456R",
+    "balance": -269369,
     "trucks": [
       { "truckNumber": "KL10ST7890" },
       { "truckNumber": "KL08UV1234" }
     ]
   },
   {
-    "name": "Rajasthan Desert Carriers",
+    "firmName": "Rajasthan Desert Carriers CarriersCarriersCarriersCarriersCarriersCarriersCarriersCarriers",
+    "ownerName": "Jofa",
     "mobile": "4987654321",
     "address": "7 Hawa Mahal Road",
     "city": "Jaipur",
     "state": "Rajasthan",
     "pinCode": "302001",
     "panNumber": "STUVW7890X",
+    "balance": 959256,
     "trucks": [
       { "truckNumber": "RJ14WX5678" }
     ]

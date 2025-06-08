@@ -16,7 +16,16 @@ const TotalCredit = () => {
 
       <div style={{ margin: "20px 0" }}>
         <h2>Transporters</h2>
-        <div style={{ overflowY: "auto", height: "60vh", paddingTop: "10px" }}>
+        <div
+          style={{
+            overflowY: "auto",
+            height: "60vh",
+            paddingTop: "10px",
+            justifySelf: "center",
+            padding: "0 10px",
+            width: "100%",
+          }}
+        >
           {transporters.map((transporter) => (
             <TransporterCard
               key={transporter.panNumber}
