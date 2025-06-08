@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import FormInput from "../components/FormInput";
 import Header from "../components/Header";
@@ -8,7 +8,7 @@ import { AppContext } from "../context/AppContext";
 
 const AddTransporter = () => {
   const navigate = useNavigate();
-  const { addTransporter } = useContext(AppContext);
+  const { addTransporter, updateTransporter } = useContext(AppContext);
   const [currentTruck, setCurrentTruck] = useState({
     stateCode: "",
     districtCode: "",
@@ -16,18 +16,23 @@ const AddTransporter = () => {
     number: "",
   });
 
-  const [formData, setFormData] = useState({
-    firmName: "",
-    ownerName: "",
-    mobile: "",
-    email: "",
-    address: "",
-    city: "",
-    state: "",
-    pinCode: "",
-    panNumber: "",
-    trucks: [],
-  });
+  const location = useLocation();
+  const { editTransporter } = location.state || {};
+
+  const [formData, setFormData] = useState(
+    editTransporter || {
+      firmName: "",
+      ownerName: "",
+      mobile: "",
+      email: "",
+      address: "",
+      city: "",
+      state: "",
+      pinCode: "",
+      panNumber: "",
+      trucks: [],
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,13 +86,18 @@ const AddTransporter = () => {
       return;
     }
 
-    const newTransporter = {
+    const transporterData = {
       ...formData,
       mobile: formData.mobile.toString(),
       pinCode: formData.pinCode.toString(),
     };
 
-    addTransporter(newTransporter);
+    if (editTransporter) {
+      updateTransporter(transporterData);
+    } else {
+      addTransporter(transporterData);
+    }
+
     navigate(ROUTES.TOTAL_CREDIT);
   };
 

@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect } from "react";
-import transportersData from "../data/transporters.json";
+import { createContext, useEffect, useState } from "react";
 import transactionsData from "../data/transactions.json";
+import transportersData from "../data/transporters.json";
 
 export const AppContext = createContext();
 
@@ -30,6 +30,26 @@ export const AppProvider = ({ children }) => {
     setTransactions([...transactions, newTransaction]);
   };
 
+  const updateTransporter = (updatedTransporter) => {
+    setTransporters((prev) =>
+      prev.map((t) =>
+        t.panNumber === updatedTransporter.panNumber ? updatedTransporter : t
+      )
+    );
+  };
+
+  const deleteTransporter = (panNumber) => {
+    setTransporters((prev) => prev.filter((t) => t.panNumber !== panNumber));
+  };
+
+  const toggleHotlist = (panNumber) => {
+    setTransporters((prev) =>
+      prev.map((t) =>
+        t.panNumber === panNumber ? { ...t, isHotlisted: !t.isHotlisted } : t
+      )
+    );
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -39,6 +59,9 @@ export const AppProvider = ({ children }) => {
         getTransactionsByPan,
         addTransporter,
         addTransaction,
+        updateTransporter,
+        deleteTransporter,
+        toggleHotlist,
       }}
     >
       {children}

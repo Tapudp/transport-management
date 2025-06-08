@@ -22,7 +22,6 @@ const TotalCredit = () => {
             height: "60vh",
             paddingTop: "10px",
             justifySelf: "center",
-            padding: "0 10px",
             width: "100%",
           }}
         >
