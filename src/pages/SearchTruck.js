@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { ROUTES } from "../constants/routes";
 import { TextField, MenuItem, Box, Typography } from "@mui/material";
-
-const FUEL_PRICES = {
-  "petrol normal": 94.49,
-  "petrol turbo": 98.8,
-  "diesel normal": 90.17,
-  "diesel turbo": 95.2,
-};
+import { AppContext } from "../context/AppContext";
 
 const TRUCK_DATA = [
   { state: "GJ", district: "01", series: "N", number: "8571" },
@@ -20,6 +14,7 @@ const TRUCK_DATA = [
 ];
 
 const SearchTruck = () => {
+  const { fuelPrices } = useContext(AppContext);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTruck, setSelectedTruck] = useState(null);
@@ -41,8 +36,8 @@ const SearchTruck = () => {
   }, [searchTerm]);
 
   useEffect(() => {
-    if (activeField === "liters" && fuelType && FUEL_PRICES[fuelType]) {
-      const calculatedAmount = parseFloat(liters) * FUEL_PRICES[fuelType];
+    if (activeField === "liters" && fuelType && fuelPrices[fuelType]) {
+      const calculatedAmount = parseFloat(liters) * fuelPrices[fuelType];
       setAmount(
         isNaN(calculatedAmount) ? 0 : parseFloat(calculatedAmount.toFixed(2))
       );
@@ -50,8 +45,8 @@ const SearchTruck = () => {
   }, [liters, fuelType, activeField]);
 
   useEffect(() => {
-    if (activeField === "amount" && fuelType && FUEL_PRICES[fuelType]) {
-      const calculatedLiters = parseFloat(amount) / FUEL_PRICES[fuelType];
+    if (activeField === "amount" && fuelType && fuelPrices[fuelType]) {
+      const calculatedLiters = parseFloat(amount) / fuelPrices[fuelType];
       setLiters(
         isNaN(calculatedLiters) ? 0 : parseFloat(calculatedLiters.toFixed(2))
       );
@@ -174,7 +169,7 @@ const SearchTruck = () => {
             onChange={(e) => setFuelType(e.target.value)}
             sx={{ flex: 1 }}
           >
-            {Object.keys(FUEL_PRICES).map((fuel) => (
+            {Object.keys(fuelPrices).map((fuel) => (
               <MenuItem key={fuel} value={fuel}>
                 {fuel}
               </MenuItem>

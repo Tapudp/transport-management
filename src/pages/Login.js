@@ -87,6 +87,10 @@ const Login = () => {
         <button onClick={() => navigate(ROUTES.SEARCH_TRUCK)}>
           PP Filler view
         </button>
+
+        <button onClick={() => navigate(ROUTES.CHANGE_RATE)}>
+          Change Rates view
+        </button>
       </div>
 
       <Footer />

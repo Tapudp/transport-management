@@ -7,6 +7,7 @@ import ViewTransporter from "./pages/ViewTransporter";
 import SearchTruck from "./pages/SearchTruck";
 import NotFound from "./pages/NotFound";
 import { ROUTES } from "./constants/routes";
+import ChangeRates from "./pages/ChangeRates";
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
         <Route path={ROUTES.ADD_TRANSPORTER} element={<AddTransporter />} />
         <Route path={ROUTES.VIEW_TRANSPORTER} element={<ViewTransporter />} />
         <Route path={ROUTES.SEARCH_TRUCK} element={<SearchTruck />} />
+        <Route path={ROUTES.CHANGE_RATE} element={<ChangeRates />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
