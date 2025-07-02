@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import { ROUTES } from "../constants/routes";
 import { TextField, MenuItem, Box, Typography } from "@mui/material";
 
-// Mock data - in a real app this would come from your backend/context
 const FUEL_PRICES = {
   "petrol normal": 94.49,
   "petrol turbo": 98.8,
@@ -13,7 +12,6 @@ const FUEL_PRICES = {
   "diesel turbo": 95.2,
 };
 
-// Mock truck data - replace with your actual data source
 const TRUCK_DATA = [
   { state: "GJ", district: "01", series: "N", number: "8571" },
   { state: "MH", district: "02", series: "P", number: "1234" },
@@ -27,11 +25,10 @@ const SearchTruck = () => {
   const [selectedTruck, setSelectedTruck] = useState(null);
   const [filteredTrucks, setFilteredTrucks] = useState([]);
   const [fuelType, setFuelType] = useState("");
-  const [liters, setLiters] = useState(0);
-  const [amount, setAmount] = useState(0);
+  const [liters, setLiters] = useState(0); // Initialize as number 0
+  const [amount, setAmount] = useState(0); // Initialize as number 0
   const [activeField, setActiveField] = useState(null);
 
-  // Filter trucks based on search term (last 4 digits)
   useEffect(() => {
     if (searchTerm.length > 0) {
       const filtered = TRUCK_DATA.filter((truck) =>
@@ -43,33 +40,21 @@ const SearchTruck = () => {
     }
   }, [searchTerm]);
 
-  // Calculate amount when liters changes
   useEffect(() => {
-    if (
-      activeField === "liters" &&
-      liters &&
-      fuelType &&
-      FUEL_PRICES[fuelType]
-    ) {
-      const calculatedAmount = (
-        parseFloat(liters) * FUEL_PRICES[fuelType]
-      ).toFixed(2);
-      setAmount(calculatedAmount);
+    if (activeField === "liters" && fuelType && FUEL_PRICES[fuelType]) {
+      const calculatedAmount = parseFloat(liters) * FUEL_PRICES[fuelType];
+      setAmount(
+        isNaN(calculatedAmount) ? 0 : parseFloat(calculatedAmount.toFixed(2))
+      );
     }
   }, [liters, fuelType, activeField]);
 
-  // Calculate liters when amount changes
   useEffect(() => {
-    if (
-      activeField === "amount" &&
-      amount &&
-      fuelType &&
-      FUEL_PRICES[fuelType]
-    ) {
-      const calculatedLiters = (
-        parseFloat(amount) / FUEL_PRICES[fuelType]
-      ).toFixed(2);
-      setLiters(calculatedLiters);
+    if (activeField === "amount" && fuelType && FUEL_PRICES[fuelType]) {
+      const calculatedLiters = parseFloat(amount) / FUEL_PRICES[fuelType];
+      setLiters(
+        isNaN(calculatedLiters) ? 0 : parseFloat(calculatedLiters.toFixed(2))
+      );
     }
   }, [amount, fuelType, activeField]);
 
@@ -79,8 +64,13 @@ const SearchTruck = () => {
     setFilteredTrucks([]);
   };
 
+  const handleNumberChange = (value, setter) => {
+    // Ensure we're always working with numbers
+    const numValue = parseFloat(value) || 0;
+    setter(numValue);
+  };
+
   const handleSubmit = () => {
-    // Submit logic here
     navigate(ROUTES.TOTAL_CREDIT);
   };
 
@@ -131,7 +121,7 @@ const SearchTruck = () => {
           )}
         </Box>
 
-        {/* Display selected truck (disabled fields) */}
+        {/* Display selected truck */}
         {selectedTruck && (
           <Box
             sx={{
@@ -198,21 +188,17 @@ const SearchTruck = () => {
             fullWidth
             label="Enter in Litre"
             type="number"
-            value={
-              liters.length > 1 && liters[0] === 0 ? liters.slice(1) : liters
-            }
+            value={liters}
             onChange={(e) => {
-              setLiters((p) =>
-                p[0] === 0 ? p[0].slice(1) : parseFloat(e.target.value)
-              );
+              handleNumberChange(e.target.value, setLiters);
               setActiveField("liters");
             }}
+            inputProps={{ min: 0, step: 0.1 }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 borderColor: activeField === "liters" ? "#2196F3" : undefined,
               },
             }}
-            onBlur={(e) => {}}
           />
         </Box>
 
@@ -235,13 +221,10 @@ const SearchTruck = () => {
             type="number"
             value={amount}
             onChange={(e) => {
-              let result = 0;
-              if (e.target.value !== "0" && e.target.value[0] === "0") {
-                result = e.target.value.slice(1);
-              }
-              setAmount(parseFloat(result));
+              handleNumberChange(e.target.value, setAmount);
               setActiveField("amount");
             }}
+            inputProps={{ min: 0, step: 0.1 }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 borderColor: activeField === "amount" ? "#2196F3" : undefined,
