@@ -1,8 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import Header from "../components/Header";
 import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 export default function ChangeRates() {
+  const navigate = useNavigate();
   const { fuelPrices, updateFuelPrices } = useContext(AppContext);
   const [rates, setRates] = useState({
     "petrol normal": fuelPrices["petrol normal"] || 94.5,
@@ -39,18 +42,22 @@ export default function ChangeRates() {
       }
     }
 
+    // Update the context with new rates
+    updateFuelPrices(rates);
+
     if (changes.length > 0) {
       alert(
-        `You've updated the following rates:\n\n${changes.join(
-          "\n"
-        )}\n\nNew rates have been saved.`
+        `You've updated the following rates:\n\n${changes.join("\n")}\n
+        ----------------------------
+        \nNew rates have been saved.
+        \n${Object.entries(rates)
+          .map(([fuelType, price]) => `${fuelType}: → ${price}`)
+          .join("\n")}`
       );
+      setTimeout(() => navigate(ROUTES.LOGIN), 300);
     } else {
       alert("No changes were made to the fuel rates.");
     }
-
-    // Update the context with new rates
-    updateFuelPrices(rates);
 
     // If this was a midnight redirect, mark it as handled
     if (isMidnightRedirect) {
@@ -61,6 +68,8 @@ export default function ChangeRates() {
   return (
     <div className="container">
       <Header title="Welcome" />
+
+      <h2 className="change-rates-title">Do you want to change the rates?</h2>
 
       {isMidnightRedirect && (
         <div className="notification">
