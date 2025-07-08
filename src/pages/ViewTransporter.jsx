@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { AppContext } from "../context/AppContext.jsx";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { ROUTES } from "../constants/routes";
+import { ROUTES } from "../constants/routes.jsx";
 
 const ViewTransporter = () => {
   const navigate = useNavigate();

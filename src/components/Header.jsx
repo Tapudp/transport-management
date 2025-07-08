@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
+import { ROUTES } from "../constants/routes.jsx";
 
 const Header = ({ title, onBack }) => {
   const navigate = useNavigate();

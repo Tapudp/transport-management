@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { ROUTES } from "../constants/routes";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
+import { ROUTES } from "../constants/routes.jsx";
 import { TextField, MenuItem, Box, Typography } from "@mui/material";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../context/AppContext.jsx";
 
 const TRUCK_DATA = [
   { state: "GJ", district: "01", series: "N", number: "8571" },

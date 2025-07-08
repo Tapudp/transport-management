@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import TransporterCard from "../components/TransporterCard";
-import { ROUTES } from "../constants/routes";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
+import TransporterCard from "../components/TransporterCard.jsx";
+import { ROUTES } from "../constants/routes.jsx";
 
 const TotalCredit = () => {
   const navigate = useNavigate();

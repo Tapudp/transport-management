@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
+import { ROUTES } from "../constants/routes.jsx";
 
 // 404 Page Component
 const NotFound = () => {

@@ -16,9 +16,9 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
-import { AppContext } from "../context/AppContext";
-import ConfirmationDialog from "./ConfirmationDialog";
+import { ROUTES } from "../constants/routes.jsx";
+import { AppContext } from "../context/AppContext.jsx";
+import ConfirmationDialog from "./ConfirmationDialog.jsx";
 
 const TransporterCard = ({ transporter, onClick }) => {
   const navigate = useNavigate();

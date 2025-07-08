@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
-import Header from "../components/Header";
-import { AppContext } from "../context/AppContext";
+import Header from "../components/Header.jsx";
+import { AppContext } from "../context/AppContext.jsx";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
+import { ROUTES } from "../constants/routes.jsx";
 
 export default function ChangeRates() {
   const navigate = useNavigate();

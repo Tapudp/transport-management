@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import FormInput from "../components/FormInput";
-import Header from "../components/Header";
-import { ROUTES } from "../constants/routes";
-import { AppContext } from "../context/AppContext";
+import Footer from "../components/Footer.jsx";
+import FormInput from "../components/FormInput.jsx";
+import Header from "../components/Header.jsx";
+import { ROUTES } from "../constants/routes.jsx";
+import { AppContext } from "../context/AppContext.jsx";
 
 const AddTransporter = () => {
   const navigate = useNavigate();
